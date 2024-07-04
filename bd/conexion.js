@@ -1,4 +1,6 @@
 import mysql from "mysql2/promise";
+import { config } from "dotenv";
+config();
 
 class BD {
     constructor() {
@@ -9,11 +11,11 @@ class BD {
     async conectar() {
         try {
             this.conexion = await this.mysql.createConnection({
-                host: "127.0.0.5",
-                user: "root",
-                password: "root",
-                database: "aplicaciones_web",
-                port: "3306"
+                host: process.env.DATABASE_HOST,
+                database: process.env.DATABASE_NAME,
+                user: process.env.DATABASE_USER,
+                password: process.env.DATABASE_PASSWORD,
+                port: process.env.DATABASE_PORT
             });
             console.log("Conexión creada");
         } catch (error) {
@@ -34,4 +36,3 @@ class BD {
 }
 
 export { BD };
-
