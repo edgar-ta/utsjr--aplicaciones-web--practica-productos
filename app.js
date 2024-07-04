@@ -19,7 +19,7 @@ app.use("/css", express.static(path.join(__dirname, "css")));
 app.use("/js", express.static(path.join(__dirname, "js")));
 app.use("/assets", express.static(path.join(__dirname, "assets")));
 
-app.use("/user", userRoutes);
+app.use("/", userRoutes);
 app.use("/product", productRoutes);
 
 app.listen(port, () => {
